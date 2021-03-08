@@ -1,7 +1,6 @@
 package com.adeola.libraryapp.mylibrary.models;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 

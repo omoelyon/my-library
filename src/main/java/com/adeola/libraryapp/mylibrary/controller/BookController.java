@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("books")
 public class BookController {
@@ -28,4 +30,20 @@ public class BookController {
 
         return new ResponseEntity<>(bookService.update(bookId , book), HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
+        try {
+            bookService.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PostMapping("/{searchString}")
+    public ResponseEntity<List<Book>> search(@PathVariable("searchString") String searchString) {
+            return new ResponseEntity<>(bookService.search(searchString),HttpStatus.OK);
+    }
+
 }
