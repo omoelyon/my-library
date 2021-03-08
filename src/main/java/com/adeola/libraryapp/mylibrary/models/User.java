@@ -17,5 +17,19 @@ public class User {
 
     @Column(name = "lastname")
     private String lastName;
+    @Column(name = "email")
+    private String username;
 
+    private String password;
+
+    private String roles;
+
+    public String getRoles() {
+        return "ROLE_USER";
+    }
+
+    public void setRoles(String roles) {
+
+        this.roles = "ROLE_USER";
+    }
 }
