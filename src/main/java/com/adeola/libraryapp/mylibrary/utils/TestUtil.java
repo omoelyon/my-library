@@ -8,14 +8,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-//@Component
-//@Service
+
 public class TestUtil {
     @Autowired
     AuthenticationRequest auth ;
     @Autowired
     UserService userService;
-//    @Bean
+
     public String getToken() throws Exception{
         saveTestUser();
         auth = new AuthenticationRequest("test","test");
@@ -26,5 +25,9 @@ public class TestUtil {
     private void saveTestUser(){
         User user = new User("foo","bar", "test","test");
         userService.save(user);
+    }
+
+    public void deleteTestUser(){
+
     }
 }
