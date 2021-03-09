@@ -1,11 +1,13 @@
 package com.adeola.libraryapp.mylibrary.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@NoArgsConstructor
 @Table(name = "users")
 public class User {
     @Id
@@ -23,6 +25,14 @@ public class User {
     private String password;
 
     private String roles;
+
+    public User(String firstName, String lastName, String username, String password){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+    }
+
 
     public String getRoles() {
         return "ROLE_USER";

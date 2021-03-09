@@ -17,6 +17,11 @@ public class BookController {
     @Autowired
     BookService bookService;
 
+    @GetMapping("/")
+    public String welcome(){
+        return "welcome to my library";
+    }
+
     @PostMapping("/add-book")
     public ResponseEntity<Book> addBook(@RequestBody Book book){
         Book newBook = new Book();
