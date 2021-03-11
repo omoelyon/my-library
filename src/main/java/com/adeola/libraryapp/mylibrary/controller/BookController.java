@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
 import java.util.List;
 
 @RestController
@@ -47,7 +48,7 @@ public class BookController {
     }
 
     @PostMapping("/{searchString}")
-    public ResponseEntity<List<Book>> search(@PathVariable("searchString") String searchString) {
+    public ResponseEntity<HashSet<Book>> search(@PathVariable("searchString") String searchString) {
             return new ResponseEntity<>(bookService.search(searchString),HttpStatus.OK);
     }
 

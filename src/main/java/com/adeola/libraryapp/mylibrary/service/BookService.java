@@ -8,7 +8,7 @@ import com.adeola.libraryapp.mylibrary.validations.BookValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,14 +51,13 @@ public class BookService {
         bookRepository.deleteById(id);
     }
 
-    public List<Book> search(String t){
-        List<Book> result = new ArrayList<>();
+    public HashSet<Book> search(String t){
         List<List<Book>> searchResult = bookSearch.search(t);
-
-        for (List<Book> l: searchResult)
-            result.addAll(l);
-
-        return result;
+        HashSet<Book> books = new HashSet<>();
+        for (List<Book> l: searchResult) {
+            books.addAll(l);
+        }
+        return books;
     }
 
 
